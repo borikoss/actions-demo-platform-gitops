@@ -1,0 +1,99 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-gdc
+  namespace: argocd
+spec:
+    destination:
+        server: https://kubernetes.default.svc
+        namespace: argocd
+    project: default
+    source:
+        path: dev/gdc
+        repoURL: https://github.com/borikoss/actions-demo-platform-gitops
+        targetRevision: main
+        directory:
+            recurse: true
+            include: '*.yaml'
+    syncPolicy:
+        automated:
+            prune: true
+            selfHeal: true
+            allowEmpty: false
+        syncOptions:
+        - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-ldc
+  namespace: argocd
+spec:
+    destination:
+        server: https://kubernetes.default.svc
+        namespace: argocd
+    project: default
+    source:
+        path: dev/ldc
+        repoURL: https://github.com/borikoss/actions-demo-platform-gitops
+        targetRevision: main
+        directory:
+            recurse: true
+            include: '*.yaml'
+    syncPolicy:
+        automated:
+            prune: true
+            selfHeal: true
+            allowEmpty: false
+        syncOptions:
+        - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-large
+  namespace: argocd
+spec:
+    destination:
+        server: https://kubernetes.default.svc
+        namespace: argocd
+    project: default
+    source:
+        path: dev/large
+        repoURL: https://github.com/borikoss/actions-demo-platform-gitops
+        targetRevision: main
+        directory:
+            recurse: true
+            include: '*.yaml'
+    syncPolicy:
+        automated:
+            prune: true
+            selfHeal: true
+            allowEmpty: false
+        syncOptions:
+        - CreateNamespace=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-soz
+  namespace: argocd
+spec:
+    destination:
+        server: https://kubernetes.default.svc
+        namespace: argocd
+    project: default
+    source:
+        path: dev/soz
+        repoURL: https://github.com/borikoss/actions-demo-platform-gitops
+        targetRevision: main
+        directory:
+            recurse: true
+            include: '*.yaml'
+    syncPolicy:
+        automated:
+            prune: true
+            selfHeal: true
+            allowEmpty: false
+        syncOptions:
+        - CreateNamespace=true
