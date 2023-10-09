@@ -21,4 +21,5 @@ spec:
             selfHeal: true
             allowEmpty: false
         syncOptions:
-        - CreateNamespace=true
+        # namespace creation set false to enable a namespace manifest declaration
+        - CreateNamespace=false
