@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: my-hello-world-app-functional-test
+  namespace: argocd
+spec:
+    destination:
+        server: https://kubernetes.default.svc
+        namespace: argocd
+    project: default
+    source:
+        path: dev
+        repoURL: https://github.com/borikoss/charts-repo-actions-demo-gitops
+        targetRevision: main
+        directory:
+            recurse: true
+            include: '*.yaml'
+    syncPolicy:
+        automated:
+            prune: true
+            selfHeal: true
+            allowEmpty: false
+        syncOptions:
+        - CreateNamespace=true
