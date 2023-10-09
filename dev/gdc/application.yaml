@@ -9,7 +9,7 @@ spec:
         namespace: multiapp-functional-test
     project: default
     source:
-        path: dev-tmp
+        path: dev
         repoURL: https://github.com/borikoss/charts-repo-actions-demo-gitops
         targetRevision: main
         directory:
